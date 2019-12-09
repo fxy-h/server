@@ -1,0 +1,10 @@
+$(".top").banner({
+    imgs:$(".top").find("img"),    
+    left:$(".top").find("#left"), 
+    right:$(".top").find("#right"), 
+    list:false,        
+    autoPlay:true,   
+    delayTime:2000,     
+    moveTime:200,   
+    listBgColor:"green"
+})

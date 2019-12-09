@@ -1,0 +1,86 @@
+.margin{width:1200; margin:0 auto;}
+
+@font-face{
+    font-family:con;
+    src:url("https://css.gomein.net.cn/gmlib/ui/iconfont/1.0.0/iconfont.woff");
+}
+
+
+
+header{height:31px;background:#ccc;}
+header .header-a{height:31px;width:1200px;}
+header .header-a .header-a-1{width:400px;float: left;;}
+header .header-a .header-a-1 a{float: left;font:12px/31px "";color:#666;}
+header .header-a .header-a-1 a.te{padding:0 10px;}
+header .header-a .header-a-2{height:31px;width:400px;float: right;}
+header .header-a .header-a-2 ul{text-align: center;}
+header .header-a .header-a-2 ul li {float: left;font:12px/31px "";color: #666;width:60px;}
+header .header-a .header-a-2 ul li .te1{width:70px;height:70px;display: none;}
+header .header-a .header-a-2 ul li .te2{width:180px;height:140px;display: none;position: absolute;}
+header .header-a .header-a-2 ul li .te2 ul{height:70px;}
+header .header-a .header-a-2 ul li .te2 ul li p{font:14px/20px "";height:20px;}
+header .header-a .header-a-2 ul li .te2 ul li {font:10px/20px "";float:left;}
+header .header-a .header-a-2 ul li:hover .te2{display:block;}
+header .header-a .header-a-2 ul li:hover .te1{display:block;}
+
+
+
+
+#box{width:1200px;height:120px;}
+#box .box-a{width:200px;float: left;margin-top:30px;}
+#box .box-a img{float: left;}
+
+#box .box-b{width:585px;float: left;padding:30px 0 0 40px;}
+#box .box-b .user{width:63px;height:30px;color:#ccc;float: left;background:#fff;border-right:none;}
+#box .box-b input{width:320px;height:26px;color:#999;border:2px solid red;float: left;}
+#box .box-b .pass{width:91px;height:30px;background:red;color:#fff;font-size:15px;float: left;border:none;}
+#box .box-b .te{width:91px;height:30px;background:#000;color:#fff;font-size:15px;float: left;margin-left:5px;border:none;}
+#box .box-b span{color:#ccc;}
+
+#box .box-c{width:140px;float:right;margin-top:40px;}
+#box .box-c img{width:27px;height:20px;float: left;padding:5px 5px 0 0 ;}
+#box .box-c span{font:13px/39px "";color:#666;float: left;}
+
+
+nav{height:30px;background:#BE0E34;}
+nav .nav{width:990px;}
+nav .nav ul li{width:82px;font:15px/30px "";float: left;}
+nav .nav ul li a{color:#fff;}
+
+
+
+#title{width:1200px;height:450px;margin-top:30px;}
+#title .title-a{width:360px;float: left;height:593px;position: relative;}
+#title .title-a .title-a-1 .title-a-1-1 {display:none;position: absolute;top: 0;left:30px;width: 200px;height: 200px;background: url(../imgs/dotpng.png);}
+#title .title-a .title-a-1 {width: 358px;height: 358px;position: absolute;top:0;left:0;border: 1px solid #000;}
+#title .title-a .title-a-1 img{width:358px;height:358px;border:1px solid #ccc;}
+#title .title-a .title-a-2 {display:none;width: 360px;height: 360px;position: absolute;top:0;left:370px;background-size:800px 800px;border: 1px solid #000;}
+
+#title .title-b{width:600px;float: left;margin-left:10px;}
+#title .title-b ul li h4{height:6;font:100px;font:20px/30px "";color:#000;}
+#title .title-b ul li img{margin:10px 0 ;}
+#title .title-b ul li.te{padding:10px 0;height:50px;}
+#title .title-b ul li.te span{font:12px/20px "";color:#ccc;}
+#title .title-b ul li.te i{padding:0 10px;font:15px/20px "";color:red;}
+#title .title-b ul li span{font:12px/20px "";color:#ccc;}
+#title .title-b ul li a{font:12px/20px "";border:1px solid #61819f;color:#61819f;margin-left:10px;}
+#title .title-b ul li i{padding-left:10px;}
+#title .title-b ul li.te1{height:60px;width:600px;}
+#title .title-b ul li.te1 span{float: left;font:13px/20px "";color:#ccc;padding-top:20px;}
+#title .title-b ul li.te1 input{height:40px;width:120px;border:1px solid #000;float: left;margin:10px;}
+#title .title-b ul li.te4{height:70px;width:600px;float: left;}
+#title .title-b ul li.te4 input{width:32px;height:36px;text-align: center;float: left;margin-left:20px;}
+#title .title-b ul li.te4 .pass{width:140px;height:40px;background:red;font:15px/40px "";color:#fff;float: left;border:none;margin:0 10px;}
+#title .title-b ul li.te4 span{display: block;width:70px;font:15px/38px "";color:#666;float: left;border:1px solid #666;}
+
+
+
+.banner{width:1200px;}
+.banner .banner-a{width:980px;float:right;border:1px solid #ccc;}
+.banner .banner-a .banner-a-1{height:40px;background:#ccc;}
+.banner .banner-a .banner-a-1 ul li{float: left;width:96px;font:14px/40px "";color:#666;text-align: center;}
+.banner .banner-a .banner-a-1 ul li.te{background:#fff;}
+.banner .banner-a .banner-a-1 ul li:hover{color:red;}
+.banner .banner-a .banner-a-2{float:right;margin-top:10px;}
+
+

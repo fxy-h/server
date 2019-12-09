@@ -1,0 +1,63 @@
+.margin{width:1000; margin:0 auto;}
+
+@font-face{
+    font-family:con;
+    src:url("https://css.gomein.net.cn/gmlib/ui/iconfont/1.0.0/iconfont.woff");
+}
+
+
+
+header{height:31px;background:#ccc;}
+header .header-a{height:31px;width:1000px;}
+header .header-a .header-a-1{width:400px;float: left;;}
+header .header-a .header-a-1 a{float: left;font:12px/31px "";color:#666;}
+header .header-a .header-a-1 a.te{padding:0 10px;}
+header .header-a .header-a-2{height:31px;width:400px;float: right;}
+header .header-a .header-a-2 ul{text-align: center;}
+header .header-a .header-a-2 ul li {float: left;font:12px/31px "";color: #666;width:60px;}
+header .header-a .header-a-2 ul li .te1{width:70px;height:70px;display: none;}
+header .header-a .header-a-2 ul li .te2{width:180px;height:140px;display: none;position: absolute;}
+header .header-a .header-a-2 ul li .te2 ul{height:70px;}
+header .header-a .header-a-2 ul li .te2 ul li p{font:14px/20px "";height:20px;}
+header .header-a .header-a-2 ul li .te2 ul li {font:10px/20px "";float:left;}
+header .header-a .header-a-2 ul li:hover .te2{display:block;}
+header .header-a .header-a-2 ul li:hover .te1{display:block;}
+
+
+
+#logo{width:1000px;height:120px;}
+#logo img{float: left;width:125px;height:56px;margin-top:25px;}
+#logo span{color:#ccc;font-size:50px;display:  block;float: left;padding-top:25px;}
+
+
+#content{width:1000px;}
+#content .content-a{height:47px;background:#ccc;}
+#content .content-a .cehckAll{float: left;}
+#content .content-a span{width:91px;float: left;font:14px/47px "";padding-right:20px;}
+#content .content-a span.te{width:389px;float: left;}
+
+#content .content-b ul li{height:87px;background:#ccc;margin:5px 0;}
+#content .content-b ul li img{width:80px;height:80px;float: left;margin-top:3px;} 
+#content .content-b ul li p{width:300px;font:12px/20px "";float: left;color:#000;padding-left:20px;}
+#content .content-b ul li i{width:120px;font:14px/87px "";float: left;text-align: center;}
+#content .content-b ul li input{width:100px;float: left;margin-top:35px;}
+#content .content-b ul li span{width:100px;font:14px/87px "";float: right;color:#000;}
+#content .content-b ul li s{width:100px;font:14px/87px "";float:left;text-align: center;color:red;}
+
+#content .content-c{height:60px;background: #ccc;margin-top:10px;}
+#content .content-c .cehckAll{float: left;width:40px;height:40px;}
+#content .content-c .te{font:14px/60px "";float:left;}
+#content .content-c .button{float:right;width:136px;height:60px;border:none; background: red;font-size:20px;color: #fff;}
+#content .content-c span{font:14px/60px "";float:right;color:#000;}
+#content .content-c i{font:14px/60px "";float:right;color:red;}
+
+
+
+
+
+
+
+
+
+
+
