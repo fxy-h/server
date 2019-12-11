@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/tabulation.css">
+    <link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+    <header>
+        <div class="header-a margin">
+                <div class="header-a-1">
+                    <a href="">国美会员</a>
+                    <a href="" class="te">登录</a>
+                    <a href="">注册有物<img
+                            src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1994278126,943240975&fm=26&gp=0.jpg"
+                            width="12" ; height="13" ;></a>
+                </div>
+    
+                <div class="header-a-2">
+                    <ul>
+                        <li>我的订单</li>
+                        <li>我的国美</li>
+                        <li>
+                            <a href="">企业采购</a>
+                            <ul class="te1">
+                                <ul>
+                                    <li>
+                                        <img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=7bcb659c9745d688a302b5a29cf91a23/2934349b033b5bb571dc8c5133d3d539b600bc12.jpg"
+                                            alt="" width="50" ; height="50" ;>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">服务中心</a>
+                            <ul class="te2">
+                                <ul>
+                                    <li>
+                                        <p>用户服务</p>
+                                    </li>
+                                    <li>售后服务</li>
+                                    <li>帮助服务</li>
+                                    <li>新手指南</li>
+                                    <li>客服服务</li>
+                                    <li>用户注销</li>
+                                </ul>
+    
+                                <ul>
+                                    <li>
+                                        <p>商家服务</p>
+                                    </li>
+                                    <li>商家入驻</li>
+                                    <li>商家登录</li>
+                                    <li>广告平台</li>
+                                    <li>平台规则</li>
+                                    <li>商家培训</li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li><a href="">网站导航</a></li>
+                        <li><a href="http://localhost/gome/shopping.html">我的购物车</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+        <div id="box" class="margin">
+            <div class="box1">
+                <img src="./imgs/4.png" alt="">
+                <span>|</span>
+                <span>真划算</span>
+            </div>
+
+            <div class="box2">
+                <input type="text" value="请输入真划算商品名称">
+                <input type="button" value="搜索" class="te">
+            </div>
+
+            <div class="box3">
+                <ul>
+                    <li>
+                       <i></i>
+                       <p>品质保障</p>  
+                    </li>
+                    <li>
+                        <i></i>
+                        <p>货到付款</p>
+                    </li>
+                    <li class="te">
+                        <i></i>
+                        <p>退换无忧</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <nav>
+            <div class="nav margin">
+                <div class="nav-a">
+                    <a href="">首页</a>
+                    <a href="" class="te1">美日必抢</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="whole" class="margin">
+            <ul>
+                <!-- <li>
+                    <img src="https://gfs17.gomein.net.cn/T1CRdXBTCT1RCvBVdK_260.jpg" alt="">
+                    <p>555超薄日夜组合卫生巾90片</p>
+                    <a href=""><i>29.00￥</i><span>立即抢购</span></a>
+                </li> -->
+            </ul>
+
+        </div>
+
+</body>
+<script src="./ajax.js"></script>
+<script src="./cookie.js"></script>
+<script>
+class List{
+        constructor(options){
+            this.cont = options.cont;
+            this.url = options.url;
+
+            this.load();
+            this.addEvent();
+        }
+        load(){
+            var that = this;
+            ajaxGet(this.url,function(res){
+                that.res = JSON.parse(res);
+                that.display()
+            })
+        }
+        display(){
+            var str = "";
+            for(var i=0;i<this.res.length;i++){
+                str += `<li index="${this.res[i].goodsId}">
+                            <a href="amplify.html?id=${this.res[i].goodsId}">
+                           <img src="${this.res[i].img}" alt="">
+                            <p>${this.res[i].name}</p>
+                            <a javascript="" class="top"><i>${this.res[i].price}</i><span class="btn">加入购物车</span></a>
+                            </a>
+                        </li> `;
+            }
+            this.cont.innerHTML = str;
+
+        }
+        addEvent(){
+
+            var that = this;
+            this.cont.onclick = function(eve){
+                
+                var e = eve || window.event;
+                var target = e.target || e.srcElement;
+                if(target.className == "btn"){
+                that.id = target.parentNode.parentNode.getAttribute("index");
+             
+                    that.setCookie();
+                }
+              
+            }
+        }
+        setCookie(){
+          
+            this.goods = getCookie("goods") ? JSON.parse(getCookie("goods")) : [];
+            if(this.goods.length == 0){
+
+                this.goods.push({
+                    id:this.id,
+                    num:1
+                })
+            }else{
+                var onoff = true;
+                for(var i=0;i<this.goods.length;i++){
+            
+                    if(this.goods[i].id === this.id){
+    
+                        this.goods[i].num++;
+                        onoff = false;
+                    }
+                }
+               
+                if(onoff){
+       
+                    this.goods.push({
+                        id:this.id,
+                        num:1
+                    })
+                }
+       
+            }
+
+            setCookie("goods",JSON.stringify(this.goods));
+        }
+    
+}
+new List({
+        url:"http://localhost/gome/json/goods.json",
+        cont:document.getElementById("whole").querySelector("ul")
+    })
+</script>
+</html>
