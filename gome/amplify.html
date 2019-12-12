@@ -100,7 +100,10 @@
             </div>
         </nav>
 
-
+        <!-- name:document.querySelector(".title-b ul li h4"),
+        price:document.querySelector(".title-b .te i"),
+        img:document.querySelector(".title-a-1 img"),
+        bigPic:document.querySelector(".title-a-2") -->
         <div id="title" class="margin">
             <div class="title-a">
                 <div class="title-a-1">
@@ -197,8 +200,9 @@
         display(){
                 console.log(this.res);
             for(var i=0;i<this.res.length;i++){
+                
                 if( this.res[i].goodsId == this.id){
-
+                
                     this.name.innerHTML = this.res[i].name;
                     this.price.innerHTML = this.res[i].price;
                     this.img.src = this.res[i].img;

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/shopping.css">
+    <link rel="stylesheet" href="css/public.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-a margin">
+            <div class="header-a-1">
+                <a href="">国美会员</a>
+                <a href="" class="te">登录</a>
+                <a href="">注册有物<img
+                        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1994278126,943240975&fm=26&gp=0.jpg"
+                        width="12" ; height="13" ;></a>
+            </div>
+
+            <div class="header-a-2">
+                <ul>
+                    <li>我的订单</li>
+                    <li>我的国美</li>
+                    <li>
+                        <a href="">企业采购</a>
+                        <ul class="te1">
+                            <ul>
+                                <li>
+                                    <img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=7bcb659c9745d688a302b5a29cf91a23/2934349b033b5bb571dc8c5133d3d539b600bc12.jpg"
+                                        alt="" width="50" ; height="50" ;>
+                                </li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">服务中心</a>
+                        <ul class="te2">
+                            <ul>
+                                <li>
+                                    <p>用户服务</p>
+                                </li>
+                                <li>售后服务</li>
+                                <li>帮助服务</li>
+                                <li>新手指南</li>
+                                <li>客服服务</li>
+                                <li>用户注销</li>
+                            </ul>
+
+                            <ul>
+                                <li>
+                                    <p>商家服务</p>
+                                </li>
+                                <li>商家入驻</li>
+                                <li>商家登录</li>
+                                <li>广告平台</li>
+                                <li>平台规则</li>
+                                <li>商家培训</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li><a href="">网站导航</a></li>
+                    <li><a href="">手机国美</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="logo" class="margin">
+        <img src="./imgs/4.png" alt="">
+        <span>|</span>
+        <span>购物车</span>
+    </div>
+
+    <div id="content" class="margin">
+        <div class="content-a">
+            <input type="checkbox" class="cehckAll" id="chec"><span>全部</span>
+            <span class="te">商品信息</span>
+            <span>单价</span>
+            <span>数量</span>
+            <span>小计</span>
+            <span>操作</span>
+        </div>
+
+        <div class="content-b">
+            <ul>
+                <!-- <li>
+                    <input type="checkbox" class="cehckAll" id="checkAll">
+                    <img src="https://gfs17.gomein.net.cn/T1bwxyBsJT1RCvBVdK_260.jpg" alt="">
+                    <p>九阳（Joyoung）电压力锅 电高压锅 压力煲 预约定时 一锅双胆 开盖营养煮</p>
+                    <i>¥319</i>
+                    <input type="number" min="1">
+                    <span>删除</span>
+                </li> -->
+            </ul>
+        </div>
+
+        <div class="content-c">
+            <input type="checkbox" class="cehckAll" id="checkAll">
+            <span class="te">全部</span>
+
+            <input type="button" value="去结算》" class="button">
+            <span>已选1件商品</span>
+            <span>总计：</span><i></i>
+        </div>
+    </div>
+
+</body>
+<script src="./cookie.js"></script>
+<script src="./ajax.js"></script>
+<script>
+    class Car {
+        constructor(options) {
+            this.url = options.url;
+            this.tbody = options.tbody;
+            this.chec = options.chec;
+            // 1.读取到所有商品数据
+            this.load();
+
+            // 5.事件委托绑定事件
+            this.addEvent();
+            //this.changs();
+        //his.checkLine();
+
+        }
+        load() {
+            var that = this;
+            ajaxGet(this.url, function (res) {
+                that.res = JSON.parse(res);
+                // 2.读取到cookie
+                that.getCookie();
+            })
+        }
+        getCookie() {
+            this.goods = getCookie("goods") ? JSON.parse(getCookie("goods")) : [];
+
+            // 3.拿到cookie中的id与所有商品数据的goodsId做比较
+            this.display();
+        }
+        display() {
+            var str = "";
+            for (var i = 0; i < this.res.length; i++) {
+                for (var j = 0; j < this.goods.length; j++) {
+                    if (this.res[i].goodsId === this.goods[j].id) {
+                        // 4.相同了，渲染这个数据（就是添加到购物车的商品）
+                        str += `<li index="${this.goods[j].id}">
+                                    <input type="checkbox" class="checkLine" id="checkAll">
+                                    <img src="${this.res[i].img}" alt="">
+                                    <p>${this.res[i].name}</p>
+                                    <i>${this.res[i].price}</i>
+                                    <input type="number"value="${this.goods[j].num}" min="1">
+                                    <s>${parseInt(this.res[i].price.replace("¥", "")) * this.goods[j].num}</s>
+                                    <span>删除</span>
+                                </li>`
+                    }
+                }
+            }
+            this.tbody.innerHTML = str;
+
+        }
+        addEvent() {
+            var that = this;
+            // 5-1.委托删除的事件
+            this.tbody.addEventListener("click", function (eve) {
+                if (eve.target.tagName == "SPAN") {
+                    // 6-1.保存要删除的数据的id
+                    that.id = eve.target.parentNode.getAttribute("index");
+                    // 7-1.删除DOM元素
+                    eve.target.parentNode.remove();
+                    // 8-1.调用更新cookie方法，传入删除操作
+                    // 是真正的删除cookie么？不是
+                    // 因为只有一条cookie，里面的数据是数组的形式
+                    // 从这条cookie中剔除出这个数据
+                    that.updateCookie(function (i) {
+                        that.goods.splice(i, 1);
+                    });
+                }
+            })
+            // 5-2.委托修改的事件
+            this.tbody.addEventListener("input", function (eve) {
+                if (eve.target.tagName == "INPUT") {
+                    // 6-2.保存要修改的数据的id
+                    that.id = eve.target.parentNode.getAttribute("index");
+                    // 7-2.调用更新cookie的方法，传入修改操作
+                    that.updateCookie(function (i) {
+                        that.goods[i].num = eve.target.value;
+                    });
+                    eve.target.parentNode.querySelector("s").innerHTML = eve.target.parentNode.querySelector("i").innerHTML.replace("¥", "") * eve.target.value;
+                }
+            })
+        }
+        updateCookie(cb) {
+            // 更新cookie的功能方法：
+            // U1.遍历数组，拿到所有数据
+            for (var i = 0; i < this.goods.length; i++) {
+                console.log(i);
+                // U2.和当前id做比较
+                if (this.goods[i].id === this.id) {
+                    // U3.符合，执行传入的更新操作
+                    cb(i);
+                }
+            }
+            // U4.还得再存回去
+            setCookie("goods", JSON.stringify(this.goods))
+        }
+        
+
+
+
+    }
+
+    new Car({
+        url: "http://localhost/gome/json/goods.json",
+        tbody: document.querySelector(".content-b ul")
+
+    })
+
+
+
+
+</script>
+
+</html>
